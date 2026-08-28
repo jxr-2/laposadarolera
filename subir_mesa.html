@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <div class="Subir Mesas">
+        // detalles de la mesa
+
+        <h3>Nombre de la mesa</h3>
+        <input type="text" required id="nombreMesa">
+        <h3>Sistema</h3>
+        <input type="text" required id="sistema">
+        <h3>Duracion</h3>
+        <select id="duracion" required>
+            <option value="oneShot">One Shot</option>
+            <option value="aventuraCorta">Aventura Corta: dos, cuatro sesiones aproximadamente</option>
+            <option value="aventuraLarga">Aventura Larga: definitivamente más de cuatro sesiones, pero con un final definido y claro.</option>
+            <option value="campaña">Campaña: Duración? Lo que salga.</option>
+        </select>
+        <h3>Qué experiencia previa requieren tus jugadores?</h3>
+        <select id="experiencia">
+            <option value="principiante">Principiante: ninguna, explico todo desde cero.</option>
+            <option value="intermedio">Intermedio: ya han jugado alguna que otra vez rol.</option>
+            <option value="avanzado">Avanzado: ya han jugado varias veces.</option>
+            <option value="esp">Otros</option>
+        </select>
+        <h3>Descripcion</h3>
+        <input type="text" required id="descripcion">
+        <h3>Enfoque</h3>
+        <input type="text" required id="enfoque" >
+
+        
+        <h3>Palabras Clave</h3>
+        <input type="text" required id="keywords">
+        <h3>Cantidad players</h3>
+        <input type="number" id="players" required>
+        <h3>Dia</h3>
+        <input type="date" id="dia" required>
+
+    </div>
+    <button onclick="subirMesa()">Subir</button>
+    
+    <script>
+        function subirMesa() {
+            // guardar datos de la mesa
+            let nombreMesa = document.getElementById("nombreMesa").value;
+            let sistema = document.getElementById("sistema").value;
+            let descripcion = document.getElementById("descripcion").value;
+            let enfoque = document.getElementById("enfoque").value;
+            let keywords = document.getElementById("keywords").value;
+            let players = document.getElementById("players").value;
+            let dia = document.getElementById("dia").value;
+
+            // crear objeto con los datos de la mesa
+            let mesa = {
+                nombreMesa: nombreMesa,
+                sistema: sistema,
+                descripcion: descripcion,
+                enfoque: enfoque,
+                keywords: keywords,
+                players: players,
+                dia: dia
+            };
+
+            let mesasGuardadas = JSON.parse(localStorage.getItem("mesasRol")) || [];
+            mesasGuardadas.push(mesa);
+
+            localStorage.setItem("mesasRol", JSON.stringify(mesasGuardadas));
+            
+            // redirigir
+            window.location.href = "mesas.html";
+        }
+    </script>
+</html>

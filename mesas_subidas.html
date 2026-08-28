@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>Mesas de Rol Disponibles</h1>
+
+    <div id="contenedorMesas" class="contenedor-mesas">
+        <!-- dejandoles un lugarsito a las mesitas -->
+    </div>
+
+    <script>
+        // cargar las mesas guardadas en localStorage
+        function obtenerMesas() {
+            return JSON.parse(localStorage.getItem("mesasRol")) || [];
+        }
+
+        // eliminar una mesa seleccionada por su ID
+        function eliminarMesa(id) {
+            if (confirm("posta queres borrar esta mesa o es pura wachineada")) {
+                let mesas = obtenerMesas();
+                // filtra el arreglo excluyendo la mesa con ese id
+                mesas = mesas.filter(mesa => mesa.id !== id);
+                
+                // guarda la nueva lista en localstorage
+                localStorage.setItem("mesasRol", JSON.stringify(mesas));
+                
+                // a ver que onda
+                mostrarMesas(mesas);
+            }
+        }
+
+        // para ver esas mesas
+        function mostrarMesas(mesasParaMostrar) {
+            let contenedor = document.getElementById("contenedorMesas");
+            contenedor.innerHTML = "";
+
+            // che aca no hay nada
+            if (mesasParaMostrar.length === 0) {
+                contenedor.innerHTML = "<p>cuatro cero cuatro, aca no hay nada</p>";
+                return;
+            }
+
+            mesasParaMostrar.forEach((mesa) => {
+                let tarjeta = document.createElement("div");
+                
+                tarjeta.innerHTML = `
+                    <div>
+                        <h2>${mesa.nombreMesa}</h2>
+                        <span class="badge-sistema">${mesa.sistema}</span>
+                        
+                        <p class="campo"><strong>Descripción:</strong> ${mesa.descripcion}</p>
+                        <p class="campo"><strong>Enfoque:</strong> ${mesa.enfoque}</p>
+                        <p class="campo"><strong>Jugadores necesarios:</strong> ${mesa.players}</p>
+                        <p class="campo"><strong>Fecha:</strong> ${mesa.dia}</p>
+                        <p class="keywords-tag"><strong>Palabras clave:</strong> ${mesa.keywords}</p>
+                    </div>
+                    <button class="btn-eliminar" onclick="eliminarMesa(${mesa.id})">Eliminar Mesa</button>
+                `;
+                contenedor.appendChild(tarjeta);
+            });
+        }
+
+        // cargar las mesas devuelta
+        document.addEventListener("DOMContentLoaded", () => {
+            mostrarMesas(obtenerMesas());
+        });
+    </script>
+</body>
+</html>
