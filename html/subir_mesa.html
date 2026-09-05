@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar mesa · La Posada Rolera</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand-mark" href="../index.html" aria-label="Ir al inicio">
+            <img src="../assets/images/logo-lpr.png" alt="La Posada Rolera">
+            <span>LA POSADA<br><strong>ROLERA</strong></span>
+        </a>
+        <nav aria-label="Navegación principal">
+            <a href="mesas_subidas.html" data-require-auth>Mesas</a>
+            <a href="../index.html#como-funciona">¿Cómo funciona?</a>
+            <!--a href="archivo.html" data-require-auth>Archivo</a-->
+            <a href="admin.html" data-require-admin>Panel admin</a>
+            <div id="nav-auth"></div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="page-header">
+            <p class="eyebrow">Solo administradores</p>
+            <h1 id="titulo-form">Cargar mesa recibida</h1>
+            <p>Esta mesa llegó por un medio externo (Whatsapp, Instagram, etc.). Cargala acá para publicarla en la posada.</p>
+        </div>
+
+        <div class="form-card form-card--wide">
+            <p id="form-error" class="form-error" hidden></p>
+            <form id="form-mesa">
+                <div class="field-row">
+                    <div class="field">
+                        <label for="nombreMesa">Nombre de la mesa</label>
+                        <input type="text" id="nombreMesa" required>
+                    </div>
+                    <div class="field">
+                        <label for="sistema">Sistema</label>
+                        <input type="text" id="sistema" required placeholder="D&D 5e, Mothership, Vampiro…">
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="duracion">Duración</label>
+                        <select id="duracion" required>
+                            <option value="oneShot">One Shot</option>
+                            <option value="aventuraCorta">Aventura Corta (2 a 4 sesiones aprox.)</option>
+                            <option value="aventuraLarga">Aventura Larga (más de 4 sesiones, final definido)</option>
+                            <option value="campaña">Campaña (duración abierta)</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label for="experiencia">Experiencia requerida</label>
+                        <select id="experiencia" required>
+                            <option value="principiante">Principiante: explico todo desde cero</option>
+                            <option value="intermedio">Intermedio: ya jugaron alguna vez</option>
+                            <option value="avanzado">Avanzado: ya jugaron varias veces</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" required></textarea>
+                </div>
+                <div class="field">
+                    <label for="enfoque">Enfoque</label>
+                    <input type="text" id="enfoque" placeholder="Narrativo, combate táctico, terror, comedia…">
+                </div>
+                <div class="field">
+                    <label for="keywords">Palabras clave (separadas por coma)</label>
+                    <input type="text" id="keywords" placeholder="horror, misterio, oneshot">
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="players">Cupos (jugadores)</label>
+                        <input type="number" id="players" min="1" required>
+                    </div>
+                    <div class="field">
+                        <label for="dia">Fecha</label>
+                        <input type="date" id="dia" required>
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label for="hora">Hora</label>
+                        <input type="time" id="hora" value="16:00">
+                    </div>
+                    <div class="field">
+                        <label for="lugar">Lugar</label>
+                        <input type="text" id="lugar" value="La Posada Rolera">
+                    </div>
+                </div>
+
+                <div class="field-row">
+                    <div class="field">
+                        <label for="narradorNombre">Nombre del narrador (interno, no público)</label>
+                        <input type="text" id="narradorNombre">
+                    </div>
+                    <div class="field">
+                        <label for="narradorContacto">Contacto del narrador (interno, no público)</label>
+                        <input type="text" id="narradorContacto">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary btn-block" id="btn-submit">Publicar mesa</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>La Posada Rolera</p>
+        <span>El punto de encuentro de la comunidad rolera de Puerto Madryn. · <a href="https://instagram.com/laposadarolera" target="_blank" rel="noopener">@laposadarolera</a></span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.52.1/dist/umd/supabase.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/mesas-data.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/subir_mesa.js"></script>
+</body>
+</html>

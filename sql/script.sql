@@ -1,0 +1,4 @@
+-- Este archivo quedó obsoleto: era un esquema de referencia genérico para
+-- "algún backend futuro". Ese futuro ya llegó y es Supabase — usá
+-- sql/supabase_schema.sql, que es el que corre de verdad (tablas, RLS y
+-- las funciones de login/registro) y el que espera el código en js/.

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesas disponibles · La Posada Rolera</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand-mark" href="../index.html" aria-label="Ir al inicio">
+            <img src="../assets/images/logo-lpr.png" alt="La Posada Rolera">
+            <span>LA POSADA<br><strong>ROLERA</strong></span>
+        </a>
+        <nav aria-label="Navegación principal">
+            <a href="mesas_subidas.html" data-require-auth>Mesas</a>
+            <a href="../index.html#como-funciona">¿Cómo funciona?</a>
+            <!--a href="archivo.html" data-require-auth>Archivo</a-->
+            <a href="admin.html" data-require-admin>Panel admin</a>
+            <div id="nav-auth"></div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="page-header">
+            <p class="eyebrow">Domingos de rol</p>
+            <h1>Mesas disponibles</h1>
+            <p>Elegí tu próxima mesa según sistema, experiencia requerida y cupos disponibles.</p>
+        </div>
+
+        <div class="filtros">
+            <input type="search" id="f-texto" placeholder="Buscar por nombre, sistema o palabra clave…">
+            <select id="f-sistema"><option value="">Todos los sistemas</option></select>
+            <select id="f-experiencia">
+                <option value="">Cualquier experiencia</option>
+                <option value="principiante">Principiante</option>
+                <option value="intermedio">Intermedio</option>
+                <option value="avanzado">Avanzado</option>
+            </select>
+            <select id="f-disponibilidad">
+                <option value="">Cualquier disponibilidad</option>
+                <option value="disponible">Con cupos</option>
+                <option value="llena">Sin cupos</option>
+            </select>
+        </div>
+
+        <div id="contenedorMesas" class="mesas-grid"></div>
+    </main>
+
+    <footer class="footer">
+        <p>La Posada Rolera</p>
+        <span>El punto de encuentro de la comunidad rolera de Puerto Madryn. · <a href="https://instagram.com/laposadarolera" target="_blank" rel="noopener">@laposadarolera</a></span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.52.1/dist/umd/supabase.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/mesas-data.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/mesas_subidas.js"></script>
+</body>
+</html>

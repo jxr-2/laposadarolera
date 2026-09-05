@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Posada Rolera: el punto de encuentro de la comunidad rolera de Puerto Madryn.">
+    <title>La Posada Rolera</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand-mark" href="#inicio" aria-label="Ir al inicio">
+            <img src="assets/images/logo-lpr.png" alt="La Posada Rolera">
+            <span>LA POSADA<br><strong>ROLERA</strong></span>
+        </a>
+        <nav aria-label="Navegación principal">
+            <a href="html/mesas_subidas.html" data-require-auth>Mesas</a>
+            <a href="#como-funciona">¿Cómo funciona?</a>
+            <!--a href="html/archivo.html" data-require-auth>Archivo</a-->
+            <a href="html/admin.html" data-require-admin>Panel admin</a>
+            <div id="nav-auth"></div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-copy">
+                <p class="eyebrow">Puerto Madryn · Comunidad rolera</p>
+                <h1>La Posada Rolera.</h1>
+                <p class="hero-intro">Encontrá tu próxima mesa, conocé nuevos grupos y compartí las historias que todavía no fueron contadas.</p>
+                <div class="home-actions">
+                    <a class="btn-primary" href="html/mesas_subidas.html">Ver mesas <span aria-hidden="true">↗</span></a>
+                    <a class="btn-secondary" href="#como-funciona">¿Cómo funciona?</a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <div class="media-frame">
+                    <video id="intro-video" autoplay muted playsinline preload="auto" poster="assets/images/logo-lpr.png" aria-label="Ambientación de La Posada Rolera">
+                        <source src="assets/videos/intro1.mp4" type="video/mp4">
+                        Tu navegador no soporta la etiqueta de video.
+                    </video>
+                    <div class="media-caption"><span class="live-dot"></span> La partida está por comenzar</div>
+                </div>
+                <img class="hero-logo" src="assets/images/logo-lpr.png" alt="Logo de La Posada Rolera">
+            </div>
+        </section>
+
+        <section class="welcome-strip" aria-label="Resumen de la comunidad">
+            <p><span class="strip-number">●</span> Mesas para todos</p>
+            <p><span class="strip-number">●</span> Comunidad cercana</p>
+            <p><span class="strip-number">●</span> Historias compartidas</p>
+        </section>
+
+        <section class="info" id="como-funciona">
+            <div class="section-heading">
+                <p class="eyebrow">Una mesa siempre espera</p>
+                <h2>Encontrá tu lugar<br>en la historia.</h2>
+            </div>
+            <div class="info-content">
+                <p>Explorá las mesas disponibles y elegí tu próxima aventura según el sistema, el enfoque, la cantidad de jugadores y la fecha.</p>
+                <p>Creá tu cuenta para inscribirte, ver tu historial y enterarte de cada mesa nueva apenas se publica.</p>
+                <a class="text-link" href="html/login.html">Crear una cuenta <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class="proximas" id="proximas-mesas" aria-label="Próximas mesas">
+            <div class="section-heading">
+                <p class="eyebrow">Domingos de rol</p>
+                <h2>Próximas<br>mesas.</h2>
+            </div>
+            <div id="proximas-contenedor" class="mesas-grid mesas-grid--home">
+                <p class="empty-state">Cargando mesas…</p>
+            </div>
+            <p class="gate-note" id="proximas-nota" hidden>
+                Para inscribirte a una mesa necesitás una cuenta o el link directo que te compartió un admin.
+                <a href="html/login.html">Crear cuenta / ingresar →</a>
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer" id="contacto">
+        <p>La Posada Rolera</p>
+        <span>El punto de encuentro de la comunidad rolera de Puerto Madryn.</span>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.52.1/dist/umd/supabase.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/mesas-data.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

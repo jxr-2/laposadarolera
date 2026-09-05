@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de administración · La Posada Rolera</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand-mark" href="../index.html" aria-label="Ir al inicio">
+            <img src="../assets/images/logo-lpr.png" alt="La Posada Rolera">
+            <span>LA POSADA<br><strong>ROLERA</strong></span>
+        </a>
+        <nav aria-label="Navegación principal">
+            <a href="mesas_subidas.html" data-require-auth>Mesas</a>
+            <a href="../index.html#como-funciona">¿Cómo funciona?</a>
+            <a href="archivo.html" data-require-auth>Archivo</a>
+            <a href="admin.html" data-require-admin>Panel admin</a>
+            <div id="nav-auth"></div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="page-header">
+            <p class="eyebrow">Solo administradores</p>
+            <h1>Panel de administración</h1>
+            <p>Gestioná mesas, cupos de temporada, usuarios y respaldos de la posada desde acá. Pensado para usarse también desde el celular.</p>
+        </div>
+
+        <div class="stats-row" id="admin-stats"></div>
+
+        <div class="section-block">
+            <div class="section-block__head">
+                <h2>Configuración de temporada</h2>
+            </div>
+            <div class="panel">
+                <p id="config-error" class="form-error" hidden></p>
+                <form id="form-config" class="field-row">
+                    <div class="field">
+                        <label for="cfg-temporada">Temporada actual</label>
+                        <input type="text" id="cfg-temporada">
+                    </div>
+                    <div class="field">
+                        <label for="cfg-max">Cantidad objetivo de mesas activas</label>
+                        <input type="number" id="cfg-max" min="1">
+                    </div>
+                    <div class="field" style="justify-content:flex-end;">
+                        <button type="submit" class="btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <div class="section-block__head">
+                <h2>Mesas activas</h2>
+                <a class="btn-primary" href="subir_mesa.html">Cargar mesa</a>
+            </div>
+            <div class="table-wrap">
+                <table class="data-table" id="tabla-mesas">
+                    <thead><tr><th>Nombre</th><th>Sistema</th><th>Fecha</th><th>Cupos</th><th>Estado</th><th></th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <div class="section-block__head"><h2>Inscripciones pendientes de confirmar</h2></div>
+            <div class="table-wrap">
+                <table class="data-table" id="tabla-pendientes">
+                    <thead><tr><th>Mesa</th><th>Nombre</th><th>Contacto</th><th></th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <div class="section-block__head"><h2>Usuarios registrados</h2></div>
+            <div class="table-wrap">
+                <table class="data-table" id="tabla-usuarios">
+                    <thead><tr><th>Nombre</th><th>Email</th><th>Rol</th><th></th></tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-block">
+            <div class="section-block__head"><h2>Respaldo de datos</h2></div>
+            <div class="panel">
+                <p class="form-hint" style="margin-bottom:16px;">Los datos ya viven en Supabase, no en este navegador. Este botón es solo para tener una foto puntual (por ejemplo, antes de un cambio grande). Para restaurar o borrar datos en serio, hacelo desde el SQL Editor o el Table Editor de tu proyecto en supabase.com.</p>
+                <div class="table-actions">
+                    <button id="btn-exportar">Descargar respaldo (.json)</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>La Posada Rolera</p>
+        <span>El punto de encuentro de la comunidad rolera de Puerto Madryn. · <a href="https://instagram.com/laposadarolera" target="_blank" rel="noopener">@laposadarolera</a></span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.52.1/dist/umd/supabase.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/mesas-data.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil · La Posada Rolera</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand-mark" href="../index.html" aria-label="Ir al inicio">
+            <img src="../assets/images/logo-lpr.png" alt="La Posada Rolera">
+            <span>LA POSADA<br><strong>ROLERA</strong></span>
+        </a>
+        <nav aria-label="Navegación principal">
+            <a href="mesas_subidas.html" data-require-auth>Mesas</a>
+            <a href="../index.html#como-funciona">¿Cómo funciona?</a>
+            <!--a href="archivo.html" data-require-auth>Archivo</a-->
+            <a href="admin.html" data-require-admin>Panel admin</a>
+            <div id="nav-auth"></div>
+        </nav>
+    </header>
+
+    <main class="page">
+        <div class="profile-header">
+            <div class="profile-avatar" id="perfil-avatar">?</div>
+            <div>
+                <h1 id="perfil-nombre">—</h1>
+                <p class="muted" id="perfil-rol">—</p>
+            </div>
+        </div>
+
+        <div class="profile-grid">
+            <div class="panel">
+                <h2>Mis datos</h2>
+                <p id="error-datos" class="form-error" hidden></p>
+                <form id="form-datos">
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="pf-nombre">Nombre y apellido</label>
+                            <input type="text" id="pf-nombre" required>
+                        </div>
+                        <div class="field">
+                            <label for="pf-apodo">Apodo</label>
+                            <input type="text" id="pf-apodo">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="pf-email">Email</label>
+                        <input type="email" id="pf-email" required>
+                    </div>
+                    <div class="field">
+                        <label for="pf-telefono">Teléfono de contacto</label>
+                        <input type="tel" id="pf-telefono">
+                    </div>
+                    <div class="field">
+                        <label for="pf-bio">Sobre vos (opcional)</label>
+                        <textarea id="pf-bio" placeholder="Sistemas favoritos, qué te gusta narrar o jugar…"></textarea>
+                    </div>
+                    <div class="field">
+                        <label><input type="checkbox" id="pf-narrador"> Soy narrador/a</label>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Guardar cambios</button>
+                </form>
+            </div>
+
+            <div>
+                <div class="panel" style="margin-bottom:24px;">
+                    <h2>Cambiar contraseña</h2>
+                    <p id="error-pass" class="form-error" hidden></p>
+                    <p id="ok-pass" class="form-hint" hidden></p>
+                    <form id="form-pass">
+                        <div class="field">
+                            <label for="pass-actual">Contraseña actual</label>
+                            <input type="password" id="pass-actual" required>
+                        </div>
+                        <div class="field">
+                            <label for="pass-nueva">Contraseña nueva</label>
+                            <input type="password" id="pass-nueva" required minlength="4">
+                        </div>
+                        <button type="submit" class="btn-secondary btn-block">Actualizar contraseña</button>
+                    </form>
+                </div>
+
+                <div class="panel">
+                    <h2>Mis inscripciones</h2>
+                    <div id="lista-inscripciones"><p class="empty-state">Cargando…</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-block" style="margin-top:36px;" id="bloque-mesas-creadas" hidden>
+            <div class="section-block__head"><h2>Mesas que administro</h2></div>
+            <div id="lista-mesas-creadas" class="mesas-grid"></div>
+        </div>
+
+        <div class="panel" style="margin-top:36px;">
+            <h2>Cerrar sesión</h2>
+            <p class="form-hint" style="margin-bottom:14px;">Vas a tener que volver a ingresar con tu email y contraseña.</p>
+            <button class="btn-secondary" id="btn-logout-perfil">Cerrar sesión</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>La Posada Rolera</p>
+        <span>El punto de encuentro de la comunidad rolera de Puerto Madryn. · <a href="https://instagram.com/laposadarolera" target="_blank" rel="noopener">@laposadarolera</a></span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.52.1/dist/umd/supabase.js"></script>
+    <script src="../js/storage.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/mesas-data.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
